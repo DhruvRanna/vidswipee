@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SplashScreen } from "@/components/SplashScreen";
 import { OnboardingFlow } from "@/components/OnboardingFlow";
 import { SwipeInterface } from "@/components/SwipeInterface";
 import { YouBuddyChat } from "@/components/YouBuddyChat";
 import { NotificationSystem } from "@/components/NotificationSystem";
+import { useAuth } from "@/hooks/use-auth";
 
 const Index = () => {
+  const { user } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [userPreferences, setUserPreferences] = useState(null);
   const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setShowSplash(false);
+      setIsOnboarded(true);
+    }
+  }, [user]);
 
   const handleSplashComplete = () => {
     setShowSplash(false);

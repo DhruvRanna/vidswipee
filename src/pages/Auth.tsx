@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 export default function AuthPage() {
   const { user } = useAuth();
-  if (user) return <Navigate to="/dashboard" replace />;
+  if (user) return <Navigate to="/" replace />;
 
   return (
     <main className="min-h-[100dvh] gradient-surface flex items-center justify-center p-6">
