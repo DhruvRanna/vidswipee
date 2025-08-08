@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern Liquid Glass Theme - Vibrant & Futuristic */
+    --background: 220 20% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 280 80% 65%; /* Vibrant Purple */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 200 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 20% 12%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 320 70% 60%; /* Hot Pink Accent */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 12%;
+    --ring: 280 80% 65%;
+
+    --radius: 1.2rem;
+    
+    /* Liquid Glass Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(280 80% 65%), hsl(320 70% 60%), hsl(260 75% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(200 100% 70%), hsl(240 80% 75%));
+    --gradient-surface: linear-gradient(135deg, hsl(220 20% 10% / 0.7), hsl(220 20% 12% / 0.8));
+    --gradient-glass: linear-gradient(135deg, hsl(220 20% 15% / 0.3), hsl(220 20% 20% / 0.1));
+    
+    --shadow-glow-primary: 0 0 60px hsl(280 80% 65% / 0.4);
+    --shadow-glow-accent: 0 0 40px hsl(320 70% 60% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-float: 0 20px 60px hsl(0 0% 0% / 0.5);
+    
+    --blur-glass: blur(20px);
+    --blur-heavy: blur(40px);
+    
+    --border-glass: 1px solid hsl(220 20% 25% / 0.3);
+    --border-glow: 1px solid hsl(280 80% 65% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-hidden;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    background: hsl(220 20% 8%);
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-surface {
+    background: var(--gradient-surface);
+  }
+  
+  .gradient-glass {
+    background: var(--gradient-glass);
+  }
+  
+  .shadow-glow-primary {
+    box-shadow: var(--shadow-glow-primary);
+  }
+  
+  .shadow-glow-accent {
+    box-shadow: var(--shadow-glow-accent);
+  }
+  
+  .shadow-glass {
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .shadow-float {
+    box-shadow: var(--shadow-float);
+  }
+  
+  .liquid-glass {
+    backdrop-filter: var(--blur-glass);
+    background: var(--gradient-glass);
+    border: var(--border-glass);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .liquid-glass-heavy {
+    backdrop-filter: var(--blur-heavy);
+    background: linear-gradient(135deg, hsl(220 20% 15% / 0.4), hsl(220 20% 20% / 0.2));
+    border: var(--border-glow);
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Mobile-specific utilities */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+  
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: var(--shadow-glow-primary); }
+    to { box-shadow: var(--shadow-glow-accent); }
+  }
+}
