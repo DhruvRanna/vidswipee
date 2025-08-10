@@ -1,6 +1,6 @@
 # Welcome to your TypeScript project
 
-## Project info
+# Project info
 
 **URL**: https://vidswipee.vercel.app
 
